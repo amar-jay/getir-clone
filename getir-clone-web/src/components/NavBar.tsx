@@ -1,5 +1,5 @@
 import React from 'react'
-import  { Box, HStack, textDecoration } from '@chakra-ui/react'
+import  { Box, HStack, Text, textDecoration } from '@chakra-ui/react'
 
 import NextLink from 'next/link'
 import {Link } from "@chakra-ui/react"
@@ -13,7 +13,7 @@ export const NavItemLeft:React.FC<{children: string}> = ({children}) => {
     return (
         <NextLink href={'/'}>
             <Link>
-            <Box p={3} mt={1} mx={3} borderTopRadius={'xl'} textDecoration={'none'} _hover={{textDecoration: 'none', backgroundColor: 'blackAlpha.500' }} >
+            <Box p={".5rem 1.5rem 0 1.5rem"} borderTopRadius={'xl'} textDecoration={'none'} _hover={{textDecoration: 'none', backgroundColor: 'blackAlpha.500' }} >
             {children}
             </Box>
             </Link>
@@ -24,17 +24,17 @@ export const NavItemLeft:React.FC<{children: string}> = ({children}) => {
 const NavItemRight:React.FC<{Icon?:IconType, name: string}> = ({Icon, name}) => {
     return (
     <NextLink href={'/'}>
-        <Box w={"8rem"} flexDir={'row'}>
-            {Icon && <Icon size={'1rem'} />}
-            {name}
+        <Box display={'inline-flex'} alignItems={'center'}>
+            <Icon size={'1rem'} />
+           <Text px={1} mr={4}>{name}</Text>
         </Box>
         </NextLink>
     )}
 
 export const NavBar:React.FC<{}> = () => {
     return (
-        <HStack pt={3} justifyContent={'space-between'} px={5} minW={'full'} backgroundColor={'facebook.500'}>
-            <HStack>
+        <HStack pt={"1px"} justifyContent={'space-between'} px={'4rem'} minW={'full'} backgroundColor={'facebook.500'}>
+            <HStack w={'30vw'} justifyContent={'space-between'}>
                 <NavItemLeft>getir</NavItemLeft>
                 <NavItemLeft>getir</NavItemLeft>
                 <NavItemLeft>getir</NavItemLeft>
@@ -42,9 +42,9 @@ export const NavBar:React.FC<{}> = () => {
                 <NavItemLeft>getir</NavItemLeft>
             </HStack>
             <HStack>
-                {/* <NavItemRight Icon={FiGlobe} name={'Türkçe'} />
+                <NavItemRight Icon={FiGlobe} name={'Türkçe'} />
                 <NavItemRight Icon={FiUser} name={'Giriş yap'} />
-                <NavItemRight Icon={FiUserPlus} name={'Kayit ol'} /> */}
+                <NavItemRight Icon={FiUserPlus} name={'Kayit ol'} />
             </HStack>
         
         </HStack>
