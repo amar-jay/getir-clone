@@ -1,7 +1,8 @@
 import { Flex, FlexProps, Text, Box } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { IconType } from 'react-icons';
-import { FiBox, FiFacebook, FiTwitter} from 'react-icons/fi'
+import { FiFacebook, FiGlobe, FiInstagram, FiTwitter} from 'react-icons/fi'
+import { NavItemRight } from './NavBar';
 const Icons:React.FC<{Icon: IconType }> = ({Icon}) => {
   return (
     <NextLink href={'/'}>
@@ -24,8 +25,9 @@ export const Footer = (props: FlexProps) => (
     <Text>© {new Date().getFullYear()}, Built by Manan </Text>
     <Box>
       <Icons Icon={FiFacebook}/>
-      <Icons Icon={FiFacebook}/>
-      <Icons Icon={FiFacebook}/>
+      <Icons Icon={FiTwitter}/>
+      <Icons Icon={FiInstagram}/>
+      <NavItemRight Icon={FiGlobe} name={'Türkçe'} />
     </Box>
     </Flex>
 )

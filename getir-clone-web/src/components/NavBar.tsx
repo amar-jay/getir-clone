@@ -21,7 +21,7 @@ export const NavItemLeft:React.FC<{children: string}> = ({children}) => {
     )
 }
 
-const NavItemRight:React.FC<{Icon?:IconType, name: string}> = ({Icon, name}) => {
+export const NavItemRight:React.FC<{Icon?:IconType, name: string}> = ({Icon, name}) => {
     return (
     <NextLink href={'/'}>
         <Box display={'inline-flex'} alignItems={'center'}>
