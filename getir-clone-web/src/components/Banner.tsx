@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Container, Flex, Heading, HStack, Input, Text } from "@chakra-ui/react";
 import NextImage from 'next/image'
-
+import { useSession, signIn, signOut } from 'next-auth/react'
 const ImageContainer:React.FunctionComponent<{url:string, alt?: string}> = ({ url, alt}) => {
     return (
         <Box pos={'relative'} minW={'full'} minHeight={'80vh'} style={{background: 'linear-gradient( 90deg, var(--color-primary) 0%, rgba(93,62,188,0) 100% )'}}>
@@ -11,6 +11,7 @@ const ImageContainer:React.FunctionComponent<{url:string, alt?: string}> = ({ ur
 }
 
 export default function Banner (){
+  const {data: session} = useSession();
   return (
     <Container minW={'100vw'} minHeight={'80vh'} margin={0} p={0} position={'relative'} >
     <ImageContainer url={'https://www.themanan.me/images/carousel/istanbul-0.jpg'} alt={'banner'}/>
@@ -25,13 +26,25 @@ export default function Banner (){
             </Heading>
         </Box>
         <Box backgroundColor={'white'} boxShadow={'2xl'} p={7} borderRadius={'xl'} width={'25rem'}>
+        {
+            !session?
+            <>
           <Text as={'h3'} color={'messenger.500'} textAlign={'center'} fontSize={'1xl'} fontWeight={'bold'} py={0} my={2}> Giriş yap veya kayıt ol</Text>
           <Box alignItems={'center'} display={'inline-flex'} justifyContent={'center'} w={'full'}>
-            <Input placeholder={'Arama'} backgroundColor={'#ccc'} p={5} w={'5rem'}/>
+            <Input placeholder={'Arama'} backgroundColor={'#ccc'} p={5} w={'5rem'} mx={3}/>
             <Input type={'text'} flex={1} placeholder={'Telefon numarasi'} p={5} my={5} backgroundColor={"#ccc"}/>
           </Box>
-          <Button color={'yellow.500'} backgroundColor={'blackAlpha.300'} w={'full'} py={'1rem'}> Telefon Numarasi ile devam et </Button>
-        
+          <Button color={'yellow.500'} backgroundColor={'blackAlpha'} w={'full'} py={'1.5rem'} mb={'.5rem'}> Telefon Numarasi ile devam et </Button>
+          
+            <Button color={'yellow.500'} backgroundColor={'facebook.500'} w={'full'} py={'1.5rem'} onClick={() => signIn()}> Giriş yap </Button>
+            </>
+            :
+          <>
+
+          <Text as={'h2'} color={'messenger.500'} textAlign={'center'} fontSize={'1xl'} fontWeight={'bold'} py={0} my={2}>Hi,  {session?.user?.name ?? "Bossu"}</Text>
+          <Button backgroundColor={'tomato'} w={'full'} py={'1.5rem'} onClick={() => signOut()}> Çıkış yap </Button>
+          </>
+          }
           </Box>
       </HStack>
     </Box>

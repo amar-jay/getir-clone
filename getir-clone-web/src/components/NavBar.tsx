@@ -1,6 +1,6 @@
 import React from 'react'
-import  { Box, HStack, Text, textDecoration } from '@chakra-ui/react'
-
+import  { Box, HStack, Text } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import {Link } from "@chakra-ui/react"
 import { IconType } from 'react-icons'
@@ -9,12 +9,20 @@ interface INavBar {
 
 }
 
-export const NavItemLeft:React.FC<{children: string}> = ({children}) => {
+export const NavItemLeft:React.FC<{children: string, href: string}> = ({children, href}) => {
+  const router = useRouter();
+  const isActive = router.pathname === href;
     return (
-        <NextLink href={'/'}>
+        <NextLink href={href}>
             <Link>
-            <Box p={".5rem 1.5rem 0 1.5rem"} borderTopRadius={'xl'} textDecoration={'none'} _hover={{textDecoration: 'none', backgroundColor: 'blackAlpha.500' }} >
-            {children}
+            <Box p={"1rem 1rem 0 1rem"} 
+            borderTopRadius={'xl'} 
+            textDecoration={'none'} 
+            _hover={{textDecoration: 'none', backgroundColor: 'blackAlpha.500' }} 
+            backgroundColor={isActive? 'blackAlpha.500': 'none'} 
+            color={isActive? 'yellow.500': '#fff'}
+            >
+                <Text fontSize={'18px'} fontWeight={'bold'}>{children}</Text>
             </Box>
             </Link>
         </NextLink>
@@ -25,21 +33,22 @@ export const NavItemRight:React.FC<{Icon?:IconType, name: string}> = ({Icon, nam
     return (
     <NextLink href={'/'}>
         <Box display={'inline-flex'} alignItems={'center'}>
-            <Icon size={'1rem'} />
-           <Text px={1} mr={4}>{name}</Text>
+           {Icon && <Icon size={'1rem'} />}
+           <Text px={1} mr={4} fontWeight={'medium'}>{name}</Text>
         </Box>
         </NextLink>
     )}
 
 export const NavBar:React.FC<{}> = () => {
+
     return (
         <HStack pt={"1px"} justifyContent={'space-between'} px={'4rem'} minW={'full'} backgroundColor={'facebook.500'}>
             <HStack w={'30vw'} justifyContent={'space-between'}>
-                <NavItemLeft>getir</NavItemLeft>
-                <NavItemLeft>getir</NavItemLeft>
-                <NavItemLeft>getir</NavItemLeft>
-                <NavItemLeft>getir</NavItemLeft>
-                <NavItemLeft>getir</NavItemLeft>
+                <NavItemLeft href="/">getir</NavItemLeft>
+                <NavItemLeft href="/getiryemek">getiryemek</NavItemLeft>
+                <NavItemLeft href="/getirsu">getirsu</NavItemLeft>
+                <NavItemLeft href="/getircarsi">getircarsi</NavItemLeft>
+                <NavItemLeft href="/getirbuyuk">getirbuyuk</NavItemLeft>
             </HStack>
             <HStack display={{base: 'none', md: 'block'}}>
                 <NavItemRight Icon={FiGlobe} name={'Türkçe'} />
