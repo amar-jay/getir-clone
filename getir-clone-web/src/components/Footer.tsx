@@ -1,9 +1,11 @@
-import { Flex, FlexProps } from '@chakra-ui/react'
+import { Flex, FlexProps, Text, Box } from '@chakra-ui/react'
 import NextLink from 'next/link'
-const Icons:React.FC<{Icon: Element; }> = ({Icon}) => {
+import { IconType } from 'react-icons';
+import { FiBox, FiFacebook, FiTwitter} from 'react-icons/fi'
+const Icons:React.FC<{Icon: IconType }> = ({Icon}) => {
   return (
     <NextLink href={'/'}>
-      <Icon/>
+      <Icon size={'1rem'}/>
     </NextLink>
   )
 }
@@ -21,7 +23,9 @@ export const Footer = (props: FlexProps) => (
     >
     <Text>© {new Date().getFullYear()}, Built by Manan </Text>
     <Box>
-      <
+      <Icons Icon={FiFacebook}/>
+      <Icons Icon={FiFacebook}/>
+      <Icons Icon={FiFacebook}/>
     </Box>
     </Flex>
 )
