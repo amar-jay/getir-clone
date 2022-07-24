@@ -41,7 +41,7 @@ export const NavBar:React.FC<{}> = () => {
                 <NavItemLeft>getir</NavItemLeft>
                 <NavItemLeft>getir</NavItemLeft>
             </HStack>
-            <HStack>
+            <HStack display={{base: 'none', md: 'block'}}>
                 <NavItemRight Icon={FiGlobe} name={'Türkçe'} />
                 <NavItemRight Icon={FiUser} name={'Giriş yap'} />
                 <NavItemRight Icon={FiUserPlus} name={'Kayit ol'} />

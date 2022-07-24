@@ -4,7 +4,7 @@ import NextImage from 'next/image'
 
 const ImageContainer:React.FunctionComponent<{url:string, alt?: string}> = ({ url, alt}) => {
     return (
-        <Box pos={'relative'} minW={'full'} minHeight={'80vh'}>
+        <Box pos={'relative'} minW={'full'} minHeight={'80vh'} style={{background: 'linear-gradient( 90deg, var(--color-primary) 0%, rgba(93,62,188,0) 100% )'}}>
             <NextImage src={url} alt={alt || url} layout={'fill'}/>
         </Box>
         );
@@ -12,7 +12,7 @@ const ImageContainer:React.FunctionComponent<{url:string, alt?: string}> = ({ ur
 
 export default function Banner (){
   return (
-    <Container minW={'100vw'} minHeight={'80vh'} margin={0} p={0} position={'relative'}>
+    <Container minW={'100vw'} minHeight={'80vh'} margin={0} p={0} position={'relative'} >
     <ImageContainer url={'https://www.themanan.me/images/carousel/istanbul-0.jpg'} alt={'banner'}/>
     <Box position={'absolute'} top={'0'} left={'0'} right={'0'} bottom={'0'} maxW={'100vw'}>
       <HStack p={'4rem'} alignItems={'center'} justifyContent={'space-between'}  flexDir={'row'} h={'100%'}>

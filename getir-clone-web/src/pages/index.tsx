@@ -5,6 +5,7 @@ import { Main } from 'next/document'
 import { Text } from '@chakra-ui/react'
 import Banner from '../components/Banner'
 import Categories from '../components/Categories'
+import { DarkModeSwitch } from '../components/DarkModeSwitch'
 const Index = () => (
   <Container height="100vh" margin={0} p={0}>
     <NavBar/>
@@ -14,6 +15,7 @@ const Index = () => (
     <Container>
       <Text>Hello</Text>
     </Container>
+  <DarkModeSwitch/>
   </Container>
 )
 
