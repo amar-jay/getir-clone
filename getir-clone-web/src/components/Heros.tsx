@@ -1,9 +1,7 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { get_random_color } from "../utils/generate_random_color";
-import NextLink from "next/link";
 import "swiper/css";
 import "swiper/css/bundle";
-import { ReactNode } from "react";
 import {
   Navigation,
   Pagination,
@@ -31,7 +29,7 @@ const DummyContainer: React.FC<{ children: string }> = ({ children }) => {
     </Flex>
   );
 };
-const SwiperComp: React.FC<{ slides: ReactNode[] }> = ({ slides }) => {
+const SwiperComp: React.FC<{}> = () => {
   return (
     <Swiper
       style={{ zIndex: 0 }}
@@ -45,13 +43,13 @@ const SwiperComp: React.FC<{ slides: ReactNode[] }> = ({ slides }) => {
         Parallax,
       ]}
       spaceBetween={100}
-      autoplay={{delay: 3000}}
+      autoplay={{ delay: 3000 }}
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
       keyboard={{ enabled: true }}
       slidesPerView={1}
-    // onSlideChange={() => console.log("slideChange: ")}
-    // onSwiper={(swiper) => console.log("Swiper: ", swiper)}
+      // onSlideChange={() => console.log("slideChange: ")}
+      // onSwiper={(swiper) => console.log("Swiper: ", swiper)}
       onReachEnd={() => {}}
     >
       {"PHOTOGRAPHY".split("").map((letter, i) => (
